@@ -1,0 +1,32 @@
+{
+    "LANG_NAME_EN": "Englisch",
+    "LANG_NAME_FR": "Französisch",
+    "LANG_NAME_DE": "Deutsch",
+
+    "ADD_LANG": "Eine Sprache hinzufügen",
+
+    "CHOOSE_LANG": "Wählen Sie eine Sprache",
+    "LEVEL_SPEAK_LANG": "Gesprochene Ebene",
+    "LEVEL_WRITE_LANG": "Schriftliches niveau",
+    "LEVEL_COMPREHENSION_LANG": "Verständnis niveau",
+
+    "TOTAL_LANGS": "Anzahl der Sprachen",
+
+    "BTN_SAVE_LANG": "Registrieren",
+
+    "LIST_LANG": "Liste der Sprachen",
+
+    "EDIT_LANG": "bearbeiten",
+    "DETAIL_LANG": "Einzelheiten",
+    "DELETE_LANG": "löschen",
+
+    "LEVEL_LANG_1": "Debütant",
+    "LEVEL_LANG_2": "Elementar",
+    "LEVEL_LANG_3": "Prä-Intermediär",
+    "LEVEL_LANG_4": "Vermittler",
+    "LEVEL_LANG_5": "Obere Mittelstufe",
+    "LEVEL_LANG_6": "Fortgeschrittene",
+    "LEVEL_LANG_7": "Aktuell",
+
+    "HELLO": "Meine Linie ist supercool"
+}

@@ -6,7 +6,7 @@ This project has been develop for test.
 
 ## Tool used for translate
 
-To implement tranlation more quickly, we use **ngx-translate/core** and **ngx-translate/http-loader** --save library. You can see more about it on [ngx-translate/core & ngx-translate/http-loader](https://github.com/ngx-translate/core)
+To implement tranlation more quickly, we use **ngx-translate/core** and **ngx-translate/http-loader** libraries. You can learn more about it on [ngx-translate/core & ngx-translate/http-loader](https://github.com/ngx-translate/core).
 
 
 ## Tools used for user interface

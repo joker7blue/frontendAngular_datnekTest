@@ -1,0 +1,32 @@
+{
+    "LANG_NAME_EN": "Anglais",
+    "LANG_NAME_FR": "Francais",
+    "LANG_NAME_DE": "Allemand",
+
+    "ADD_LANG": "Ajouter une langue",
+
+    "CHOOSE_LANG": "choisir une langue",
+    "LEVEL_SPEAK_LANG": "Niveau parlé",
+    "LEVEL_WRITE_LANG": "Niveau ecrit",
+    "LEVEL_COMPREHENSION_LANG": "Niveau comprehension",
+
+    "TOTAL_LANGS": "Nombre de langue",
+    
+    "BTN_SAVE_LANG": "Enregister",
+
+    "LIST_LANG": "Liste des langues",
+
+    "EDIT_LANG": "Modifier",
+    "DETAIL_LANG": "Detail",
+    "DELETE_LANG": "Supprimer",
+
+    "LEVEL_LANG_1": "Debutant",
+    "LEVEL_LANG_2": "Élémentaire",
+    "LEVEL_LANG_3": "Pré-intermédiaire",
+    "LEVEL_LANG_4": "Intermédiaire",
+    "LEVEL_LANG_5": "Intermédiaire supérieur",
+    "LEVEL_LANG_6": "Avancé",
+    "LEVEL_LANG_7": "Courant",
+
+    "HELLO": "Mon texte est super cool"
+}
