@@ -22,7 +22,8 @@
           <select type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"
             formControlName="code">
             <option value=""></option>
-            <option *ngFor="let lang of availableLanguage" value="{{lang.code}}">{{ getLangName(lang.code) | translate }}
+            <option *ngFor="let lang of availableLanguage" value="{{lang.code}}">
+              {{ getLangName(lang.code) | translate }}
             </option>
           </select>
         </div>
@@ -54,7 +55,9 @@
           </select>
         </div>
         <div>
-          <button type="submit" name="" id="" class="btn btn-primary">{{ 'BTN_SAVE_LANG' | translate }}</button>
+          <div class="col-sm-12">
+            <button type="submit" name="" id="" class="btn btn-primary">{{ 'BTN_SAVE_LANG' | translate }}</button>
+          </div>
         </div>
       </form>
     </div>
@@ -85,15 +88,89 @@
             <td>{{ 'LEVEL_LANG_'+ lang.level_write | translate }}</td>
             <td>{{ 'LEVEL_LANG_'+ lang.level_comprehension | translate }}</td>
             <td>
-              <button type="button" class="btn btn-success mr-2">{{ 'EDIT_LANG' | translate }}</button>
-              <button type="button" class="btn btn-warning mr-2">{{ 'DETAIL_LANG' | translate }}</button>
-              <button type="button" class="btn btn-danger" (click)="deleteLang(lang.id)">{{ 'DELETE_LANG' | translate }}</button>
+              <button type="button" class="btn btn-success mr-2"
+                (click)="openModal(contentUp, lang.code)">{{ 'EDIT_LANG' | translate }}</button>
+              <button type="button" class="btn btn-warning mr-2"
+                (click)="openModal(content, lang.code)">{{ 'DETAIL_LANG' | translate }}</button>
+              <button type="button" class="btn btn-danger"
+                (click)="deleteLang(lang.id)">{{ 'DELETE_LANG' | translate }}</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ 'DETAIL_LANG' | translate }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h2>{{ getLangName(activeLang.code)  | translate }}</h2>
+      <br />
+      <div><b>{{ 'LEVEL_SPEAK_LANG' | translate }}:</b> {{ 'LEVEL_LANG_'+ activeLang.level_speak | translate }}</div>
+      <div><b>{{ 'LEVEL_WRITE_LANG' | translate }}:</b> {{ 'LEVEL_LANG_'+ activeLang.level_write | translate }}</div>
+      <div><b>{{ 'LEVEL_COMPREHENSION_LANG' | translate }}:</b>
+        {{ 'LEVEL_LANG_'+ activeLang.level_comprehension | translate }}</div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>
+
+  <ng-template #contentUp let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ 'DETAIL_LANG' | translate }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h2>{{ getLangName(activeLang.code) | translate }}</h2>
+      <br />
+      <form [formGroup]="langUpdateForm" (ngSubmit)="onSubmitUpdateForm()" class="row">
+        <div class="col-md-6 form-group">
+          <label for="">{{ 'LEVEL_SPEAK_LANG' | translate }}*</label>
+          <select type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"
+            formControlName="level_speak">
+            <option value=""></option>
+            <option *ngFor="let level of totalLevelsLangs" value="{{level}}">{{ 'LEVEL_LANG_'+level | translate }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="">{{ 'LEVEL_WRITE_LANG' | translate }}*</label>
+          <select type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"
+            formControlName="level_write">
+            <option value=""></option>
+            <option *ngFor="let level of totalLevelsLangs" value="{{level}}">{{ 'LEVEL_LANG_'+level | translate }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="">{{ 'LEVEL_COMPREHENSION_LANG' | translate }}*</label>
+          <select type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId"
+            formControlName="level_comprehension">
+            <option value=""></option>
+            <option *ngFor="let level of totalLevelsLangs" value="{{level}}">{{ 'LEVEL_LANG_'+level | translate }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 form-group"></div>
+        <div>
+          <div class="col-sm-12">
+            <button type="submit" name="" id="" class="btn btn-primary">{{ 'BTN_SAVE_LANG' | translate }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>
 
   <div class="mt-3 text-center mb-4">
     &copy;2020 All Rigth Reserved

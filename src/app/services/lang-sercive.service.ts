@@ -28,4 +28,8 @@ export class LangSerciveService {
   deleteLang (id) {
     return this.http.delete(this.base_api_url+'langs/'+id);
   }
+
+  updateLang (id, updatedLang) {
+    return this.http.put(this.base_api_url+'langs/'+id, updatedLang);
+  }
 }

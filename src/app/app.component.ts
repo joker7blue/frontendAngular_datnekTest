@@ -39,14 +39,17 @@ export class AppComponent {
   
   langs: Array<any> = new Array<Language>();
 
+  activeLang: any = {};
+
   activeCode = '';
   totalLevelsLangs = [1,2,3,4,5,6,7];
   availableLanguage = [];
 
   langForm: FormGroup;
+  langUpdateForm: FormGroup;
 
   constructor(private translate: TranslateService, private langSerciveService: LangSerciveService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private modalService: NgbModal) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
 
@@ -79,6 +82,12 @@ export class AppComponent {
       level_write: '',
       level_comprehension: '',
     });
+
+    this.langUpdateForm = this.formBuilder.group({
+      level_speak: '',
+      level_write: '',
+      level_comprehension: '',
+    });
   }
 
   initAvailableLang() {
@@ -87,11 +96,13 @@ export class AppComponent {
 
   // GET LANG_NAME
   getLangName(langCode: any): string {
-    return "LANG_NAME_" + langCode.toLocaleUpperCase();
+    return langCode ? "LANG_NAME_" + langCode.toLocaleUpperCase() : '';
   }
 
-  open(content) {
-    /* this.modalService.open(content); */
+  // OPEN A MODAL
+  openModal(content, langCode) {
+    this.activeLang = this.langs.find(l => l.code == langCode);
+    this.modalService.open(content);
   }
 
   onSubmitForm() {
@@ -106,6 +117,22 @@ export class AppComponent {
     );
 
     this.langSerciveService.addLang(newLang).subscribe(response => {
+      this.initForm();
+      this.initAvailableLang();
+      this.getLanguages();
+      this.filterLanguages();
+    });
+  }
+
+  onSubmitUpdateForm(){
+    const formValue = this.langUpdateForm.value;
+    const updatedLang = {
+      level_speak: formValue['level_speak'],
+      level_write: formValue['level_write'],
+      level_comprehension: formValue['level_comprehension'],
+    };
+
+    this.langSerciveService.updateLang(this.activeLang.id, updatedLang).subscribe(response => {
       this.initForm();
       this.initAvailableLang();
       this.getLanguages();
