@@ -14,4 +14,11 @@ To implement tranlation more quickly, we use **ngx-translate/core** and **ngx-tr
 - [ng-boottrap](https://ng-bootstrap.github.io/#/home)
 
 ## To add new language
-To add new language, you have to add new **json file** in **assets/in18**. The name of the file it's the **code** of the new Lang. In this file, you have to translate all the content so that it's match the new language.  
+To add new language, you have to add new **json file** in **assets/in18**. The name of the file it's the **code** of the new Lang. In this file, you have to translate all the content so that it's match the new language.
+Also, go to **initAvailableLang()** method in **app.component.ts** and add your new lang with its code.
+
+```typescript
+initAvailableLang() {
+    this.availableLanguage = [{code: 'fr', name: 'Francais'},{ code: 'en', name: 'Anglais'}, { code: 'de', name: 'Allemand'}];
+  }
+```
